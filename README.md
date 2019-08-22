@@ -166,6 +166,8 @@ The current version of Genome Synteny Viewer was only tested on Ubuntu 10.04 OS.
 * MySQL 5.0 or higher (http://dev.mysql.com/)
 * GD library. (http://php.net/manual/en/book.image.php)
 
+NOTE：PHP must have the MySQL extension and GD extension enabled
+
 If you successfully completed the above Environment Construction Tutorial, you have everything installed.
 
 ## MySQL Database Setup
@@ -206,33 +208,46 @@ CREATE TABLE IF NOT EXISTS `userinfo` (
 ```
 ## Set up mGSV
 
-Download the source code
+* Download the source code
+```bash
 git clone https://github.com/qunfengdong/mGSV.git
-Create a folder named mgsv in the DocumentRoot of Nginx web server. By default, the DocumentRoot of Nginx is /usr/local/nginx/html/
+```
+* Create a folder named mgsv in the DocumentRoot of Nginx web server. By default, the DocumentRoot of Nginx is /usr/local/nginx/html/
+```bash
 cd /usr/local/nginx/html
 mkdir mgsv
 chmod 777 mgsv
-Enter 'mgsv' directory and create a folder named tmp. Execute a Linux command to change permission for 'tmp' folder. It has to be world accessible to store the uploaded files.
+```
+* Enter 'mgsv' directory and create a folder named tmp. Execute a Linux command to change permission for 'tmp' folder. It has to be world accessible to store the uploaded files.
+```bash
 cd mgsv
 mkdir tmp
 chmod -R 777 tmp
-Move all files under the downloaded mGSV folder to the mgsv folder
-Under 'mgsv' folder you should see a file called 'Arial.ttf', Copy it to /usr/share/fonts/truetype/, you may need the sudo privilege, talk to your system administrator if necessary.
+```
+* Move all files under the downloaded mGSV folder to the mgsv folder
+* Under 'mgsv' folder you should see a file called 'Arial.ttf', Copy it to **/usr/share/fonts/truetype/**, you may need the sudo privilege, talk to your system administrator if necessary.
+```bash
 cp Arial.ttf /usr/share/fonts/truetype/
-Modify the setting.php file. File path is /usr/local/nginx/html/mgsv/lib/
+```
+* Modify the setting.php file. File path is /usr/local/nginx/html/mgsv/lib/
+```bash
 cd /usr/local/nginx/html/mgsv/lib/
 vim setting.php
+```
 Add the following information:
-
+```bash
 $database_name = 'mgsv';
 $database_user = 'mgsv';
 $database_pass = 'mgsvpass';
 $database_host = 'localhost';
-mgsv1
+```
+![mGSV_setup](https://github.com/qunfengdong/mGSV/blob/master/img/mGSV_setup.png)
 
-This completes installation, you can now open mgsv/index.php
+* This completes installation, you can now open mgsv/index.php
 (i.e., http://<YOUR_SERVER_DOMAIN_NAME>/mgsv/index.php)
 
-The mGSV web server is accessible at http://cas-bioinfo.cas.unt.edu/mgsv and the open-sourced software is also available from the web site for local installation under the terms of the GNU General Public License (http://www.gnu.org/licenses/gpl.html). mGSV is portable across Linux distributions, and compatible with PHP 5.3.3 (or higher version) and MySQL 5.0 (or higher version). mGSV installation has been tested on Debian Lenny and Ubuntu Lynx. mGSV can be viewed with FireFox 3.6.15, Safari 3.0 and Chrome 11.0. The mGSV website will be updated to contain the latest information on operating systems and software compatibility.
+![mGSV_finish_1.png](https://github.com/qunfengdong/mGSV/blob/master/img/mGSV_finish_1.png)
 
-Refer to INSTALLATION file for mGSV installation.
+![mGSV_finish_2.png](https://github.com/qunfengdong/mGSV/blob/master/img/mGSV_finish_2.png)
+
+![mGSV_finish_3.png](https://github.com/qunfengdong/mGSV/blob/master/img/mGSV_finish_3.png)
